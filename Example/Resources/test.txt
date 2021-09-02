@@ -1,0 +1,13 @@
+[ENIF]
+version=0.1.0
+
+[session1]
+value='temp'
+
+[session1.subsession1]
+property=1
+
+[Math]
+a=1
+b=2
+c=.a/.b
