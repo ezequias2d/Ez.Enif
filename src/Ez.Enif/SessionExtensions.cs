@@ -37,7 +37,7 @@ namespace Ez.Enif
             }
 
             var property = new Property(values);
-            var propertyName = temp[temp.Length - 1];
+            var propertyName = temp[^1];
             session.Properties.Add(propertyName, property);
         }
     }

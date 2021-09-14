@@ -6,13 +6,13 @@ using System.Text.RegularExpressions;
 
 namespace Ez.Enif
 {
-    public class Scanner
+    internal class Scanner
     {
         static Scanner()
         {
         }
 
-        private readonly Context _context;
+        private readonly EnifManager _context;
         private readonly ReadOnlyMemory<char> _source;
         private readonly int _length;
         private int _start;
@@ -23,12 +23,12 @@ namespace Ez.Enif
         private readonly HashSet<char> _quotes;
         private readonly HashSet<char> _ignores;
 
-        public Scanner(Context context, string source)
+        public Scanner(EnifManager context, string source)
         {
             _context = context;
             _source = new Memory<char>(source.ToCharArray());
             _length = _source.Length;
-            _reserverds = new HashSet<char>(new char[] { '[', ']', '=', ';', '"', '\'', ' ', ':', '+', '-', '/', '*' });
+            _reserverds = new HashSet<char>(new char[] { '[', ']', '=', ';', '"', '\'', ' ', '+', '-', '/', '*' });
             _quotes = new HashSet<char>(new char[] { '\'', '"' });
             _ignores = new HashSet<char>(new char[] { '\n', '\r', '\t', ' ' });
         }

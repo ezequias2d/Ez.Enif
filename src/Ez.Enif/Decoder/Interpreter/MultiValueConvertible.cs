@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ez.Enif.Decoder.Interpreter
 {
-    public class MultiValueConvertible : IConvertible
+    internal class MultiValueConvertible : IConvertible
     {
         public MultiValueConvertible(IEnumerable<IConvertible> values)
         {

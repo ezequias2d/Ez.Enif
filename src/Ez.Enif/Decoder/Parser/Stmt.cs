@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ez.Enif
 {
-    public abstract class Stmt
+    internal abstract class Stmt
     {
         public interface Visitor<R>
         {

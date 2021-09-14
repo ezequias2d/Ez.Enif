@@ -6,10 +6,10 @@ using System.Text.RegularExpressions;
 
 namespace Ez.Enif
 {
-    public class Context
+    public class EnifManager
     {
         private bool _hadError;
-        public Context()
+        public EnifManager()
         {
             _hadError = false;
 
@@ -53,7 +53,7 @@ namespace Ez.Enif
             }
         }
 
-        public void Error(Token token, string message)
+        internal void Error(Token token, string message)
         {
             if (token.Type == TokenType.EOF)
                 Report(token.Line, token.Position, " at end", message);

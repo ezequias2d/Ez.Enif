@@ -6,11 +6,11 @@ namespace Ez.Enif.Decoder.Interpreter
 {
     internal class Resolver : Expr.Visitor<object>, Stmt.Visitor<object>
     {
-        private readonly Context _context;
+        private readonly EnifManager _context;
         private readonly Session _root;
         private Session _current;
 
-        public Resolver(Context context)
+        public Resolver(EnifManager context)
         {
             _context = context;
             _root = new Session();

@@ -58,7 +58,7 @@ property=1
 
         private Session Read(string enifString)
         {
-            var context = new Context();
+            var context = new EnifManager();
             return context.Read(enifString);
         }
     }

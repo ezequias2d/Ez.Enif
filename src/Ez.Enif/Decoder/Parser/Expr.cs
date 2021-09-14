@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ez.Enif
 {
-    public abstract class Expr
+    internal abstract class Expr
     {
         public abstract R Accept<R>(Visitor<R> visitor);
         public interface Visitor<R>

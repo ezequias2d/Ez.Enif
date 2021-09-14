@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Ez.Enif
 {
-    public struct Token
+    internal struct Token
     {
         public readonly TokenType Type;
         public readonly ReadOnlyMemory<char> Lexeme;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ez.Enif
 {
-    public enum TokenType
+    internal enum TokenType
     {
         #region core
         LeftBracket,        // [

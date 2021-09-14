@@ -3,12 +3,12 @@ using System.Threading;
 
 namespace Ez.Enif.Decoder.Interpreter
 {
-    public class Executor : Stmt.Visitor<object>
+    internal class Executor : Stmt.Visitor<object>
     {
-        private readonly Context _context;
+        private readonly EnifManager _context;
         private CancellationToken _cancelationToken;
         private ExpressionExecutor _expressionExecutor;
-        public Executor(Context context)
+        public Executor(EnifManager context)
         {
             _context = context;
             _expressionExecutor = new ExpressionExecutor();

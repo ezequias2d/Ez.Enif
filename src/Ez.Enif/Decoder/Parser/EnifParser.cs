@@ -5,17 +5,17 @@ using System.Linq;
 
 namespace Ez.Enif
 {
-    public class EnifParser
+    internal class EnifParser
     {
         public class ParserExpection : Exception
         {
         }
 
         private readonly ReadOnlyMemory<Token> _tokens;
-        private readonly Context _context;
+        private readonly EnifManager _context;
         private int current;
 
-        public EnifParser(ReadOnlyMemory<Token> tokens, Context context)
+        public EnifParser(ReadOnlyMemory<Token> tokens, EnifManager context)
         {
             current = 0;
             _tokens = tokens;
@@ -301,8 +301,8 @@ namespace Ez.Enif
 
         private Stmt Session()
         {
-            var name = ConsumeAny("Expect a identifier after first bracket.", TokenType.Identifier);
-
+            var name = ConsumeAny("Expect a identifier or number after first bracket.", TokenType.Identifier, TokenType.Number);
+            
             Consume(TokenType.RightBracket, "Expect ']' after session value.");
 
             return new Stmt.Session(name);
