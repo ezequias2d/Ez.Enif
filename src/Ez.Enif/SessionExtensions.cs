@@ -22,6 +22,9 @@ namespace Ez.Enif
             return session;
         }
 
+        public static void AddValues(this Session session, string name, params IConvertible[] values) =>
+            session.AddValues(name, (IEnumerable<IConvertible>)values);
+
         public static void AddValues(this Session session, string name, IEnumerable<IConvertible> values)
         {
             name = Regex.Replace(name, @"\s+", "");
@@ -36,9 +39,17 @@ namespace Ez.Enif
                     session = session[t];
             }
 
-            var property = new Property(values);
             var propertyName = temp[^1];
-            session.Properties.Add(propertyName, property);
+            if(session.Properties.TryGetValue(propertyName, out var property))
+            {
+                foreach (var value in values)
+                    property.Add(value);
+            }
+            else
+            {
+                property = new Property(values);
+                session.Properties.Add(propertyName, property);
+            }
         }
     }
 }
