@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Ez.Enif.Decoder.Interpreter
 {
-    internal class Resolver : Expr.Visitor<object>, Stmt.Visitor<object>
+    internal class Resolver : Expr.IVisitor<object>, Stmt.IVisitor<object>
     {
         private readonly EnifManager _context;
         private readonly Session _root;

@@ -6,8 +6,8 @@ namespace Ez.Enif
 {
     internal abstract class Expr
     {
-        public abstract R Accept<R>(Visitor<R> visitor);
-        public interface Visitor<R>
+        public abstract R Accept<R>(IVisitor<R> visitor);
+        public interface IVisitor<R>
         {
             R AssignExpr(Assign expr);
             R BinaryExpr(Binary expr);
@@ -59,7 +59,7 @@ namespace Ez.Enif
                 Values = values;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.AssignExpr(this);
             }
@@ -103,7 +103,7 @@ namespace Ez.Enif
                 Right = right;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.BinaryExpr(this);
             }
@@ -122,7 +122,7 @@ namespace Ez.Enif
                 Arguments = arguments;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.CallExpr(this);
             }
@@ -139,7 +139,7 @@ namespace Ez.Enif
                 Name = name;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.GetExpr(this);
             }
@@ -154,7 +154,7 @@ namespace Ez.Enif
                 Expression = expression;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.GroupingExpr(this);
             }
@@ -169,7 +169,7 @@ namespace Ez.Enif
                 Value = value;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.LiteralExpr(this);
             }
@@ -188,7 +188,7 @@ namespace Ez.Enif
                 Right = right;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.LogicalExpr(this);
             }
@@ -205,7 +205,7 @@ namespace Ez.Enif
                 Right = right;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.UnaryExpr(this);
             }
@@ -219,7 +219,7 @@ namespace Ez.Enif
                 Name = name;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.VariableExpr(this);
             }

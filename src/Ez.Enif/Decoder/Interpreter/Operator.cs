@@ -48,15 +48,11 @@ namespace Ez.Enif.Decoder.Interpreter
         private static bool SimpleNegate(IConvertible first, IFormatProvider provider, out IConvertible result)
         {
             var code1 = first.GetTypeCode();
-            switch (code1)
+            result = code1 switch
             {
-                case TypeCode.Double:
-                    result = first.ToDouble(provider);
-                    break;
-                default:
-                    result = first.ToInt64(provider);
-                    break;
-            }
+                TypeCode.Double => first.ToDouble(provider),
+                _ => first.ToInt64(provider),
+            };
             return true;
         }
 

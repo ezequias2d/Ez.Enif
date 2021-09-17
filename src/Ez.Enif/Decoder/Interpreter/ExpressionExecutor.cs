@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ez.Enif.Decoder.Interpreter
 {
-    internal class ExpressionExecutor : Expr.Visitor<IConvertible>
+    internal class ExpressionExecutor : Expr.IVisitor<IConvertible>
     {
         private Session _current;
 

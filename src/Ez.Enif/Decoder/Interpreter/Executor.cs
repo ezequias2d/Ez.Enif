@@ -3,11 +3,11 @@ using System.Threading;
 
 namespace Ez.Enif.Decoder.Interpreter
 {
-    internal class Executor : Stmt.Visitor<object>
+    internal class Executor : Stmt.IVisitor<object>
     {
         private readonly EnifManager _context;
+        private readonly ExpressionExecutor _expressionExecutor;
         private CancellationToken _cancelationToken;
-        private ExpressionExecutor _expressionExecutor;
         public Executor(EnifManager context)
         {
             _context = context;

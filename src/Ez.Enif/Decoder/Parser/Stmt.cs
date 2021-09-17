@@ -7,13 +7,13 @@ namespace Ez.Enif
 {
     internal abstract class Stmt
     {
-        public interface Visitor<R>
+        public interface IVisitor<R>
         {
             R Expression(Expression stmt);
             R Session(Session stmt);
         }
 
-        public abstract R Accept<R>(Visitor<R> visitor);
+        public abstract R Accept<R>(IVisitor<R> visitor);
 
         public override string ToString()
         {
@@ -51,7 +51,7 @@ namespace Ez.Enif
                 Name = name;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.Session(this);
             }
@@ -66,7 +66,7 @@ namespace Ez.Enif
                 Expr = expr;
             }
 
-            public override R Accept<R>(Visitor<R> visitor)
+            public override R Accept<R>(IVisitor<R> visitor)
             {
                 return visitor.Expression(this);
             }
