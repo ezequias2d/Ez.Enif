@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Ez.Enif
@@ -44,6 +45,6 @@ namespace Ez.Enif
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        public override string ToString() => string.Join(' ', this.Select((a) => a.ToString()));
+        public override string ToString() => string.Join(' ', this.Select((a) => a.ToString(CultureInfo.InvariantCulture)));
     }
 }
